@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.CouponMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Coupon" >
+    <id column="coup_goods_id" property="coupGoodsId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="coup_value" property="coupValue" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    coup_goods_id, user_id, coup_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coupon
+    where coup_goods_id = #{coupGoodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coupon
+    where coup_goods_id = #{coupGoodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Coupon" >
+    insert into coupon (coup_goods_id, user_id, coup_value
+      )
+    values (#{coupGoodsId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{coupValue,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Coupon" >
+    insert into coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coupGoodsId != null" >
+        coup_goods_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="coupValue != null" >
+        coup_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coupGoodsId != null" >
+        #{coupGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="coupValue != null" >
+        #{coupValue,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Coupon" >
+    update coupon
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="coupValue != null" >
+        coup_value = #{coupValue,jdbcType=REAL},
+      </if>
+    </set>
+    where coup_goods_id = #{coupGoodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Coupon" >
+    update coupon
+    set user_id = #{userId,jdbcType=INTEGER},
+      coup_value = #{coupValue,jdbcType=REAL}
+    where coup_goods_id = #{coupGoodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.InteGoodsMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.InteGoods" >
+    <id column="inte_goods_id" property="inteGoodsId" jdbcType="INTEGER" />
+    <result column="key_id" property="keyId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="init_goods_price" property="initGoodsPrice" jdbcType="REAL" />
+    <result column="sal_volume" property="salVolume" jdbcType="INTEGER" />
+    <result column="goods_images" property="goodsImages" jdbcType="VARCHAR" />
+    <result column="goods_details" property="goodsDetails" jdbcType="VARCHAR" />
+    <result column="goods_pro_date" property="goodsProDate" jdbcType="DATE" />
+    <result column="goods_gu_pe" property="goodsGuPe" jdbcType="INTEGER" />
+    <result column="goods_tag" property="goodsTag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inte_goods_id, key_id, goods_name, init_goods_price, sal_volume, goods_images, goods_details, 
+    goods_pro_date, goods_gu_pe, goods_tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from integoods
+    where inte_goods_id = #{inteGoodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from integoods
+    where inte_goods_id = #{inteGoodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.InteGoods" >
+    insert into integoods (inte_goods_id, key_id, goods_name, 
+      init_goods_price, sal_volume, goods_images, 
+      goods_details, goods_pro_date, goods_gu_pe, 
+      goods_tag)
+    values (#{inteGoodsId,jdbcType=INTEGER}, #{keyId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
+      #{initGoodsPrice,jdbcType=REAL}, #{salVolume,jdbcType=INTEGER}, #{goodsImages,jdbcType=VARCHAR}, 
+      #{goodsDetails,jdbcType=VARCHAR}, #{goodsProDate,jdbcType=DATE}, #{goodsGuPe,jdbcType=INTEGER}, 
+      #{goodsTag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.InteGoods" >
+    insert into integoods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inteGoodsId != null" >
+        inte_goods_id,
+      </if>
+      <if test="keyId != null" >
+        key_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="initGoodsPrice != null" >
+        init_goods_price,
+      </if>
+      <if test="salVolume != null" >
+        sal_volume,
+      </if>
+      <if test="goodsImages != null" >
+        goods_images,
+      </if>
+      <if test="goodsDetails != null" >
+        goods_details,
+      </if>
+      <if test="goodsProDate != null" >
+        goods_pro_date,
+      </if>
+      <if test="goodsGuPe != null" >
+        goods_gu_pe,
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inteGoodsId != null" >
+        #{inteGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="keyId != null" >
+        #{keyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="initGoodsPrice != null" >
+        #{initGoodsPrice,jdbcType=REAL},
+      </if>
+      <if test="salVolume != null" >
+        #{salVolume,jdbcType=INTEGER},
+      </if>
+      <if test="goodsImages != null" >
+        #{goodsImages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDetails != null" >
+        #{goodsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsProDate != null" >
+        #{goodsProDate,jdbcType=DATE},
+      </if>
+      <if test="goodsGuPe != null" >
+        #{goodsGuPe,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTag != null" >
+        #{goodsTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.InteGoods" >
+    update integoods
+    <set >
+      <if test="keyId != null" >
+        key_id = #{keyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="initGoodsPrice != null" >
+        init_goods_price = #{initGoodsPrice,jdbcType=REAL},
+      </if>
+      <if test="salVolume != null" >
+        sal_volume = #{salVolume,jdbcType=INTEGER},
+      </if>
+      <if test="goodsImages != null" >
+        goods_images = #{goodsImages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDetails != null" >
+        goods_details = #{goodsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsProDate != null" >
+        goods_pro_date = #{goodsProDate,jdbcType=DATE},
+      </if>
+      <if test="goodsGuPe != null" >
+        goods_gu_pe = #{goodsGuPe,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag = #{goodsTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inte_goods_id = #{inteGoodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.InteGoods" >
+    update integoods
+    set key_id = #{keyId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      init_goods_price = #{initGoodsPrice,jdbcType=REAL},
+      sal_volume = #{salVolume,jdbcType=INTEGER},
+      goods_images = #{goodsImages,jdbcType=VARCHAR},
+      goods_details = #{goodsDetails,jdbcType=VARCHAR},
+      goods_pro_date = #{goodsProDate,jdbcType=DATE},
+      goods_gu_pe = #{goodsGuPe,jdbcType=INTEGER},
+      goods_tag = #{goodsTag,jdbcType=VARCHAR}
+    where inte_goods_id = #{inteGoodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

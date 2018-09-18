@@ -1,0 +1,29 @@
+DEBUG main org.apache.commons.configuration.PropertiesConfiguration - FileName set to zfbinfo.properties
+DEBUG main org.apache.commons.configuration.ConfigurationUtils - ConfigurationUtils.locate(): base is null, name is zfbinfo.properties
+DEBUG main org.apache.commons.configuration.DefaultFileSystem - Could not locate file zfbinfo.properties at null: no protocol: zfbinfo.properties
+DEBUG main org.apache.commons.configuration.ConfigurationUtils - Loading configuration from the context classpath (zfbinfo.properties)
+DEBUG main org.apache.commons.configuration.PropertiesConfiguration - Base path set to file:///C:/Users/sunwenjie/eclipse-workspace/hwadee/build/classes/zfbinfo.properties
+INFO main com.alipay.demo.trade.config.Configs - 配置文件名: zfbinfo.properties
+INFO main com.alipay.demo.trade.config.Configs - Configs{支付宝openapi网关: https://openapi.alipaydev.com/gateway.do
+, 支付宝mcloudapi网关域名: http://mcloudmonitor.com/gateway.do
+, pid: 2088102176137598
+, appid: 2016091800537566
+, 商户RSA私钥: MIIEvg******xOgGQ3
+, 商户RSA公钥: MIIBIj******IDAQAB
+, 支付宝RSA公钥: MIIBIj******IDAQAB
+, 签名类型: RSA2
+, 查询重试次数: 5
+, 查询间隔(毫秒): 5000
+, 撤销尝试次数: 3
+, 撤销重试间隔(毫秒): 2000
+, 交易保障调度延迟(秒): 5
+, 交易保障调度间隔(秒): 900
+}
+INFO main com.alipay.demo.trade.service.impl.AlipayTradeServiceImpl - trade.precreate bizContent:{"out_trade_no":"tradeprecreate15353371803591558614","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}
+DEBUG main sdk.biz.err - 2018-08-27 10:33:01^_^https://openapi.alipaydev.com/gateway.do?alipay_sdk=alipay-sdk-java-3.3.0&app_id=2016091800537566&biz_content=%7B%22out_trade_no%22%3A%22tradeprecreate15353371803591558614%22%2C%22seller_id%22%3A%22%22%2C%22total_amount%22%3A%220.01%22%2C%22undiscountable_amount%22%3A%220%22%2C%22subject%22%3A%22xxx%E5%93%81%E7%89%8Cxxx%E9%97%A8%E5%BA%97%E5%BD%93%E9%9D%A2%E4%BB%98%E6%89%AB%E7%A0%81%E6%B6%88%E8%B4%B9%22%2C%22body%22%3A%22%E8%B4%AD%E4%B9%B0%E5%95%86%E5%93%813%E4%BB%B6%E5%85%B120.00%E5%85%83%22%2C%22goods_detail%22%3A%5B%7B%22goods_id%22%3A%22goods_id001%22%2C%22goods_name%22%3A%22xxx%E5%B0%8F%E9%9D%A2%E5%8C%85%22%2C%22quantity%22%3A1%2C%22price%22%3A%2210%22%7D%2C%7B%22goods_id%22%3A%22goods_id002%22%2C%22goods_name%22%3A%22xxx%E7%89%99%E5%88%B7%22%2C%22quantity%22%3A2%2C%22price%22%3A%225%22%7D%5D%2C%22operator_id%22%3A%22test_operator_id%22%2C%22store_id%22%3A%22test_store_id%22%2C%22extend_params%22%3A%7B%22sys_service_provider_id%22%3A%222088100200300400500%22%7D%2C%22timeout_express%22%3A%22120m%22%7D&charset=utf-8&format=json&method=alipay.trade.precreate&sign=QMwmSUh20TGWIZ1DXxyeH%2FTZ9L2kUVzVH7l8vckKtl4tH4JUiB%2BxGCuBLhCewiNC3%2F4gQh9i1dPK1JKL5ccHGdL7axl7GOEvVkpm8taSeanPxqhuIS8hDW96tR4vuXYqqIets0ANZ5Mwqvumr6gFkHuMO0DRxtf%2BEoxKf7nc4o54lwYrdnj5og3qPCyK5kuZXwFCdI%2BbY5YxNtFMgxEOp6DGKP0hjOSpD%2BCwGsgMb5ims5eV4dLtt8dL%2F9T5uLCnmbBzG%2F18wkvO0PQVZ8AwUgLddynegrhU%2FTxgwY0IFyBP8ga%2Be1Ds3vile567LncyX9k%2Bsw4qHwX0IOilxVE9Lw%3D%3D&sign_type=RSA2&timestamp=2018-08-27+10%3A33%3A00&version=1.0
+INFO main sdk.biz.err - Summary^_^10000^_^null^_^ProtocalMustParams:charset=utf-8&method=alipay.trade.precreate&sign=QMwmSUh20TGWIZ1DXxyeH/TZ9L2kUVzVH7l8vckKtl4tH4JUiB+xGCuBLhCewiNC3/4gQh9i1dPK1JKL5ccHGdL7axl7GOEvVkpm8taSeanPxqhuIS8hDW96tR4vuXYqqIets0ANZ5Mwqvumr6gFkHuMO0DRxtf+EoxKf7nc4o54lwYrdnj5og3qPCyK5kuZXwFCdI+bY5YxNtFMgxEOp6DGKP0hjOSpD+CwGsgMb5ims5eV4dLtt8dL/9T5uLCnmbBzG/18wkvO0PQVZ8AwUgLddynegrhU/TxgwY0IFyBP8ga+e1Ds3vile567LncyX9k+sw4qHwX0IOilxVE9Lw==&version=1.0&app_id=2016091800537566&sign_type=RSA2&timestamp=2018-08-27 10:33:00^_^ProtocalOptParams:alipay_sdk=alipay-sdk-java-3.3.0&format=json^_^ApplicationParams:biz_content={"out_trade_no":"tradeprecreate15353371803591558614","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}^_^530ms,599ms,19ms
+INFO main com.alipay.demo.trade.service.impl.AlipayTradeServiceImpl - {"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15353371803591558614","qr_code":"https:\/\/qr.alipay.com\/bax04168xjsiv5cl5rh000f9"},"sign":"CF5JGJYPbvEvq9QJxhfoge1QVH95Kf5MA/9y5IAGxir/dCOD306DFGDHGVyfBJGhWyJRb2FcNdsvP97rrOQtTAB9mWIfM3Er5685GU4wTkcEvK7HW3w37gZc86maIzM1Kj1pXfb38jRwSMwjsxIIPynV6A1npOEImcZLoJSFglT5JqTOsaVn2OJqQ36mK9fA2UChLBo+aqYnsYbnvWl/DToAcFkLsRuZRF/fq3kqgmcM/fVswVh+Q41wkzc/TX+8Vn47zRhdEOtp4FVxnqKrRQ92rnoNYh1o3PXJo0+quHQ6v/AQG32MMIgKdPklrbtsmW46Eyvhpn3i6zxyyunQPg=="}
+INFO main com.alipay.demo.trade.Main - 支付宝预下单成功: )
+INFO main com.alipay.demo.trade.Main - code:10000, msg:Success
+INFO main com.alipay.demo.trade.Main - body:{"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15353371803591558614","qr_code":"https:\/\/qr.alipay.com\/bax04168xjsiv5cl5rh000f9"},"sign":"CF5JGJYPbvEvq9QJxhfoge1QVH95Kf5MA/9y5IAGxir/dCOD306DFGDHGVyfBJGhWyJRb2FcNdsvP97rrOQtTAB9mWIfM3Er5685GU4wTkcEvK7HW3w37gZc86maIzM1Kj1pXfb38jRwSMwjsxIIPynV6A1npOEImcZLoJSFglT5JqTOsaVn2OJqQ36mK9fA2UChLBo+aqYnsYbnvWl/DToAcFkLsRuZRF/fq3kqgmcM/fVswVh+Q41wkzc/TX+8Vn47zRhdEOtp4FVxnqKrRQ92rnoNYh1o3PXJo0+quHQ6v/AQG32MMIgKdPklrbtsmW46Eyvhpn3i6zxyyunQPg=="}
+INFO main com.alipay.demo.trade.Main - filePath:/Users/sudo/Desktop/qr-tradeprecreate15353371803591558614.png

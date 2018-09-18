@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.OrderDetail" >
+    <id column="order_goods_item_id" property="orderGoodsItemId" jdbcType="INTEGER" />
+    <result column="order_goods_id" property="orderGoodsId" jdbcType="INTEGER" />
+    <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+    <result column="goods_prices" property="goodsPrices" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_goods_item_id, order_goods_id, goods_num, goods_prices
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetail
+    where order_goods_item_id = #{orderGoodsItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderdetail
+    where order_goods_item_id = #{orderGoodsItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.OrderDetail" >
+    insert into orderdetail (order_goods_item_id, order_goods_id, goods_num, 
+      goods_prices)
+    values (#{orderGoodsItemId,jdbcType=INTEGER}, #{orderGoodsId,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, 
+      #{goodsPrices,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.OrderDetail" >
+    insert into orderdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderGoodsItemId != null" >
+        order_goods_item_id,
+      </if>
+      <if test="orderGoodsId != null" >
+        order_goods_id,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsPrices != null" >
+        goods_prices,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderGoodsItemId != null" >
+        #{orderGoodsItemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderGoodsId != null" >
+        #{orderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrices != null" >
+        #{goodsPrices,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.OrderDetail" >
+    update orderdetail
+    <set >
+      <if test="orderGoodsId != null" >
+        order_goods_id = #{orderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrices != null" >
+        goods_prices = #{goodsPrices,jdbcType=REAL},
+      </if>
+    </set>
+    where order_goods_item_id = #{orderGoodsItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.OrderDetail" >
+    update orderdetail
+    set order_goods_id = #{orderGoodsId,jdbcType=INTEGER},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      goods_prices = #{goodsPrices,jdbcType=REAL}
+    where order_goods_item_id = #{orderGoodsItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

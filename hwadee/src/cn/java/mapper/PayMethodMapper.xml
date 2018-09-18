@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.PayMethodMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.PayMethod" >
+    <id column="pay_method_id" property="payMethodId" jdbcType="INTEGER" />
+    <result column="pay_method_name" property="payMethodName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pay_method_id, pay_method_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from paymethod
+    where pay_method_id = #{payMethodId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paymethod
+    where pay_method_id = #{payMethodId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.PayMethod" >
+    insert into paymethod (pay_method_id, pay_method_name)
+    values (#{payMethodId,jdbcType=INTEGER}, #{payMethodName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.PayMethod" >
+    insert into paymethod
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payMethodId != null" >
+        pay_method_id,
+      </if>
+      <if test="payMethodName != null" >
+        pay_method_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payMethodId != null" >
+        #{payMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="payMethodName != null" >
+        #{payMethodName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.PayMethod" >
+    update paymethod
+    <set >
+      <if test="payMethodName != null" >
+        pay_method_name = #{payMethodName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_method_id = #{payMethodId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.PayMethod" >
+    update paymethod
+    set pay_method_name = #{payMethodName,jdbcType=VARCHAR}
+    where pay_method_id = #{payMethodId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.InteGoodsItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.InteGoodsItem" >
+    <id column="inte_goods_item_id" property="inteGoodsItemId" jdbcType="INTEGER" />
+    <result column="inte_goods_id" property="inteGoodsId" jdbcType="INTEGER" />
+    <result column="inte_item_price" property="inteItemPrice" jdbcType="REAL" />
+    <result column="item_inventory" property="itemInventory" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="pics" property="pics" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inte_goods_item_id, inte_goods_id, inte_item_price, item_inventory, title, pics
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from integoodsitem
+    where inte_goods_item_id = #{inteGoodsItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from integoodsitem
+    where inte_goods_item_id = #{inteGoodsItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.InteGoodsItem" >
+    insert into integoodsitem (inte_goods_item_id, inte_goods_id, inte_item_price, 
+      item_inventory, title, pics
+      )
+    values (#{inteGoodsItemId,jdbcType=INTEGER}, #{inteGoodsId,jdbcType=INTEGER}, #{inteItemPrice,jdbcType=REAL}, 
+      #{itemInventory,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{pics,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.InteGoodsItem" >
+    insert into integoodsitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inteGoodsItemId != null" >
+        inte_goods_item_id,
+      </if>
+      <if test="inteGoodsId != null" >
+        inte_goods_id,
+      </if>
+      <if test="inteItemPrice != null" >
+        inte_item_price,
+      </if>
+      <if test="itemInventory != null" >
+        item_inventory,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="pics != null" >
+        pics,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inteGoodsItemId != null" >
+        #{inteGoodsItemId,jdbcType=INTEGER},
+      </if>
+      <if test="inteGoodsId != null" >
+        #{inteGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="inteItemPrice != null" >
+        #{inteItemPrice,jdbcType=REAL},
+      </if>
+      <if test="itemInventory != null" >
+        #{itemInventory,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pics != null" >
+        #{pics,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.InteGoodsItem" >
+    update integoodsitem
+    <set >
+      <if test="inteGoodsId != null" >
+        inte_goods_id = #{inteGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="inteItemPrice != null" >
+        inte_item_price = #{inteItemPrice,jdbcType=REAL},
+      </if>
+      <if test="itemInventory != null" >
+        item_inventory = #{itemInventory,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pics != null" >
+        pics = #{pics,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inte_goods_item_id = #{inteGoodsItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.InteGoodsItem" >
+    update integoodsitem
+    set inte_goods_id = #{inteGoodsId,jdbcType=INTEGER},
+      inte_item_price = #{inteItemPrice,jdbcType=REAL},
+      item_inventory = #{itemInventory,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      pics = #{pics,jdbcType=VARCHAR}
+    where inte_goods_item_id = #{inteGoodsItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

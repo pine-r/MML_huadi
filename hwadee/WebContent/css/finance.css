@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+
+#title-tip{
+	margin-left:-780px;
+}
+
+.li-style{
+	line-heigth:20px;
+	float:left;
+}
+
+a{
+	text-decoration:none;
+}
+
+ul li{
+	list-style:none;
+}
+
+#detail{
+	margin-top:30px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:10px;
+	padding-right:400px;
+	padding-top:100px;
+	height:700px;
+	font-size:30px;
+	font-weight:bold;
+	border:2px solid black;
+}
+#detail p{
+	margin-bottom:10px;
+}
+		

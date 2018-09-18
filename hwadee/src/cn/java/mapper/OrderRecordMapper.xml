@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.OrderRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.OrderRecord" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="topic_id" property="topicId" jdbcType="INTEGER" />
+    <result column="ship_method_id" property="shipMethodId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="pay_method_id" property="payMethodId" jdbcType="INTEGER" />
+    <result column="use_user_id" property="useUserId" jdbcType="INTEGER" />
+    <result column="order_time" property="orderTime" jdbcType="DATE" />
+    <result column="order_tot_money" property="orderTotMoney" jdbcType="REAL" />
+    <result column="dist_numb" property="distNumb" jdbcType="VARCHAR" />
+    <result column="pay_numb" property="payNumb" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, topic_id, ship_method_id, user_id, pay_method_id, use_user_id, order_time, 
+    order_tot_money, dist_numb, pay_numb
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderrecord
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderrecord
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.OrderRecord" >
+    insert into orderrecord (order_id, topic_id, ship_method_id, 
+      user_id, pay_method_id, use_user_id, 
+      order_time, order_tot_money, dist_numb, 
+      pay_numb)
+    values (#{orderId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{shipMethodId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{payMethodId,jdbcType=INTEGER}, #{useUserId,jdbcType=INTEGER}, 
+      #{orderTime,jdbcType=DATE}, #{orderTotMoney,jdbcType=REAL}, #{distNumb,jdbcType=VARCHAR}, 
+      #{payNumb,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.OrderRecord" >
+    insert into orderrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="topicId != null" >
+        topic_id,
+      </if>
+      <if test="shipMethodId != null" >
+        ship_method_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="payMethodId != null" >
+        pay_method_id,
+      </if>
+      <if test="useUserId != null" >
+        use_user_id,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="orderTotMoney != null" >
+        order_tot_money,
+      </if>
+      <if test="distNumb != null" >
+        dist_numb,
+      </if>
+      <if test="payNumb != null" >
+        pay_numb,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="topicId != null" >
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="shipMethodId != null" >
+        #{shipMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payMethodId != null" >
+        #{payMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="useUserId != null" >
+        #{useUserId,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="orderTotMoney != null" >
+        #{orderTotMoney,jdbcType=REAL},
+      </if>
+      <if test="distNumb != null" >
+        #{distNumb,jdbcType=VARCHAR},
+      </if>
+      <if test="payNumb != null" >
+        #{payNumb,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.OrderRecord" >
+    update orderrecord
+    <set >
+      <if test="topicId != null" >
+        topic_id = #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="shipMethodId != null" >
+        ship_method_id = #{shipMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payMethodId != null" >
+        pay_method_id = #{payMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="useUserId != null" >
+        use_user_id = #{useUserId,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="orderTotMoney != null" >
+        order_tot_money = #{orderTotMoney,jdbcType=REAL},
+      </if>
+      <if test="distNumb != null" >
+        dist_numb = #{distNumb,jdbcType=VARCHAR},
+      </if>
+      <if test="payNumb != null" >
+        pay_numb = #{payNumb,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.OrderRecord" >
+    update orderrecord
+    set topic_id = #{topicId,jdbcType=INTEGER},
+      ship_method_id = #{shipMethodId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      pay_method_id = #{payMethodId,jdbcType=INTEGER},
+      use_user_id = #{useUserId,jdbcType=INTEGER},
+      order_time = #{orderTime,jdbcType=DATE},
+      order_tot_money = #{orderTotMoney,jdbcType=REAL},
+      dist_numb = #{distNumb,jdbcType=VARCHAR},
+      pay_numb = #{payNumb,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

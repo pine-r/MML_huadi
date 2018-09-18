@@ -1,0 +1,174 @@
+@CHARSET "UTF-8";
+ <style>
+  		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0px;
+			padding:0px;
+		}
+		body{
+			width:1024px;
+			height:2000px;
+			margin:0px auto;
+		}
+		.header{
+			width:1024px;
+			height:40px;
+			margin:0px auto;
+		
+		}
+		.links{
+			
+			margin-left:155px;
+		}
+		.header .links li{
+			margin-top:7px;
+			list-style:none;
+			margin-right:16px;	
+			float:left;
+		
+		}
+		.header .links li a{
+			text-decoration:none;
+			color:black;
+			font-size:12px;
+		}
+		.li1{
+		padding-left:500px;
+	}
+	.right{
+		float:right;
+		width:40px;
+		height:2000px;
+		background-color:#666;
+		margin-top:0px;
+	}
+	.header .logo{
+		display:inline;
+		
+		
+	}
+	.header .logo img{
+		width:150px;
+		height:76px;
+		margin-top:46px;
+		margin-left:99px;
+	}
+	.header .logo .input1{
+		width:431px;
+		height:37px;
+		margin-top:10px;
+		margin-left:135px;
+		border:1px solid #ff0000;
+		margin-top:0px;
+		position:relative;
+		bottom:40px;
+	}
+	.header .logo .input2{
+		width:102px;
+		height:37px;
+		background-color:#ff0000;
+		color:#ffffff;
+		border:1px solid #ff0000;	
+		position:relative;
+		bottom:40px;
+	}
+	.header .nav{
+		width:987px;
+		height:40px;
+		background-color:red;
+		font-size:24px ;
+		text-align:left;
+	}
+	.header .nav a{
+		color:white;
+		margin-left:40px;
+	}
+	a{
+		text-decoration:none;
+	}
+	.content1{
+		float:left;
+		width:984px;
+		height:609px;
+		margin:0px auto;
+
+	}
+	.content1 .line1{
+		margin-left:28px;
+		float:left;
+	}
+	.content1 .shangpin{
+		float:left;
+		width:928;
+		height:609px;
+	}
+	.content1 .shangpin .main1{
+		width:850px;
+		height:278px;
+		
+		margin:20px 40px ;
+	}
+	.main1 dl{
+		float:left;
+		width:240px;
+		height:178px;
+		background-color:red;
+	}
+	.dl1{
+		margin-right:65px;
+	}
+	.center-div{
+		float:left;
+		width:984px;
+		height:24px;
+		background-color:red;
+	}
+	.centent2{
+		float:left;
+		width:984px;
+		height:1028px;
+	
+	}
+	
+	.main2{
+		width:832px;
+		height:244px;
+		margin-left:88px;
+		margin-bottom:5px	
+	}
+	.m1{
+		margin-top:27px;
+	}
+	.main2 dl{
+		float:left;
+		width:400px;
+		height:169px;
+		background-color:yellow;
+	}
+	.dl2{
+		margin-right:32px;
+	}
+
+	.end-link{
+		float:left;
+		width:538px;
+		height:14px;
+		margin-left:55px;
+		margin-top:57px;
+		background-color:#666;
+	}
+	.end-ma{
+		float:left;
+		width:120px;
+		height:120px;
+		background-color:white;
+		margin-top:10px;
+		margin-left:50px;
+	}
+	.end-link li{
+		display:inline;
+		margin-right:30px;
+	}
+	.end-link li a{
+		color:white;
+		font-size:14px;
+	}

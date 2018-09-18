@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.ReplyMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Reply" >
+    <id column="reply_id" property="replyId" jdbcType="INTEGER" />
+    <result column="topic_id" property="topicId" jdbcType="INTEGER" />
+    <result column="replyto_user_id" property="replytoUserId" jdbcType="INTEGER" />
+    <result column="reply_fromser_id" property="replyFromserId" jdbcType="INTEGER" />
+    <result column="reply_content" property="replyContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reply_id, topic_id, replyto_user_id, reply_fromser_id, reply_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Reply" >
+    insert into reply (reply_id, topic_id, replyto_user_id, 
+      reply_fromser_id, reply_content)
+    values (#{replyId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{replytoUserId,jdbcType=INTEGER}, 
+      #{replyFromserId,jdbcType=INTEGER}, #{replyContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Reply" >
+    insert into reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        reply_id,
+      </if>
+      <if test="topicId != null" >
+        topic_id,
+      </if>
+      <if test="replytoUserId != null" >
+        replyto_user_id,
+      </if>
+      <if test="replyFromserId != null" >
+        reply_fromser_id,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="topicId != null" >
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="replytoUserId != null" >
+        #{replytoUserId,jdbcType=INTEGER},
+      </if>
+      <if test="replyFromserId != null" >
+        #{replyFromserId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Reply" >
+    update reply
+    <set >
+      <if test="topicId != null" >
+        topic_id = #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="replytoUserId != null" >
+        replyto_user_id = #{replytoUserId,jdbcType=INTEGER},
+      </if>
+      <if test="replyFromserId != null" >
+        reply_fromser_id = #{replyFromserId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Reply" >
+    update reply
+    set topic_id = #{topicId,jdbcType=INTEGER},
+      replyto_user_id = #{replytoUserId,jdbcType=INTEGER},
+      reply_fromser_id = #{replyFromserId,jdbcType=INTEGER},
+      reply_content = #{replyContent,jdbcType=VARCHAR}
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+</mapper>

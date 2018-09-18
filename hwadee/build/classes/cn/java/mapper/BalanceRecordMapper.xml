@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.BalanceRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.BalanceRecord" >
+    <id column="balance_change_id" property="balanceChangeId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="balance_record" property="balanceRecord" jdbcType="REAL" />
+    <result column="balance_time" property="balanceTime" jdbcType="TIME" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    balance_change_id, user_id, balance_record, balance_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from balancerecord
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from balancerecord
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.BalanceRecord" >
+    insert into balancerecord (balance_change_id, user_id, balance_record, 
+      balance_time)
+    values (#{balanceChangeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{balanceRecord,jdbcType=REAL}, 
+      #{balanceTime,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.BalanceRecord" >
+    insert into balancerecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="balanceChangeId != null" >
+        balance_change_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="balanceRecord != null" >
+        balance_record,
+      </if>
+      <if test="balanceTime != null" >
+        balance_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="balanceChangeId != null" >
+        #{balanceChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="balanceRecord != null" >
+        #{balanceRecord,jdbcType=REAL},
+      </if>
+      <if test="balanceTime != null" >
+        #{balanceTime,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.BalanceRecord" >
+    update balancerecord
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="balanceRecord != null" >
+        balance_record = #{balanceRecord,jdbcType=REAL},
+      </if>
+      <if test="balanceTime != null" >
+        balance_time = #{balanceTime,jdbcType=TIME},
+      </if>
+    </set>
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.BalanceRecord" >
+    update balancerecord
+    set user_id = #{userId,jdbcType=INTEGER},
+      balance_record = #{balanceRecord,jdbcType=REAL},
+      balance_time = #{balanceTime,jdbcType=TIME}
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </update>
+</mapper>

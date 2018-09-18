@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.OrderItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.OrderItem" >
+    <id column="order_item_id" property="orderItemId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="order_num" property="orderNum" jdbcType="BIGINT" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_image" property="goodsImage" jdbcType="VARCHAR" />
+    <result column="current_unit_price" property="currentUnitPrice" jdbcType="DECIMAL" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_item_id, user_id, order_num, goods_id, goods_name, goods_image, current_unit_price, 
+    quantity, total_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_item
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_item
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.OrderItem" >
+    insert into order_item (order_item_id, user_id, order_num, 
+      goods_id, goods_name, goods_image, 
+      current_unit_price, quantity, total_price
+      )
+    values (#{orderItemId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNum,jdbcType=BIGINT}, 
+      #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsImage,jdbcType=VARCHAR}, 
+      #{currentUnitPrice,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.OrderItem" >
+    insert into order_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderItemId != null" >
+        order_item_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsImage != null" >
+        goods_image,
+      </if>
+      <if test="currentUnitPrice != null" >
+        current_unit_price,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderItemId != null" >
+        #{orderItemId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImage != null" >
+        #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="currentUnitPrice != null" >
+        #{currentUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.OrderItem" >
+    update order_item
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null" >
+        order_num = #{orderNum,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImage != null" >
+        goods_image = #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="currentUnitPrice != null" >
+        current_unit_price = #{currentUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.OrderItem" >
+    update order_item
+    set user_id = #{userId,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=BIGINT},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_image = #{goodsImage,jdbcType=VARCHAR},
+      current_unit_price = #{currentUnitPrice,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DECIMAL}
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getByOrderNumUserId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from order_item
+    where order_num = #{orderNum}
+    and user_id = #{userId}
+  </select>
+  
+  <select id="getByOrderNum" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from order_item
+    where order_num = #{orderNum}
+  </select>
+  
+  
+  
+  
+  <insert id="batchInsert" parameterType="list">
+    insert into order_item (order_item_id,user_id, order_num,
+     goods_id, goods_name, goods_image,current_unit_price,
+      quantity, total_price
+      )
+    values
+    <foreach collection="orderItemList" index="index" item="item" separator=",">
+      (
+      #{item.orderItemId},#{item.userId},#{item.orderNum},#{item.goodsId},#{item.goodsName},#{item.goodsImage},#{item.currentUnitPrice},#{item.quantity},#{item.totalPrice}
+      )
+    </foreach>
+  </insert>
+</mapper>

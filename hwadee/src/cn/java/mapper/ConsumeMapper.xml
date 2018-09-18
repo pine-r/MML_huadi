@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.ConsumeMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Consume" >
+    <id column="consume_change_id" property="consumeChangeId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="inte_change_id" property="inteChangeId" jdbcType="INTEGER" />
+    <result column="consume_order_id" property="consumeOrderId" jdbcType="VARCHAR" />
+    <result column="consume_money" property="consumeMoney" jdbcType="REAL" />
+    <result column="consume_time" property="consumeTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    consume_change_id, user_id, inte_change_id, consume_order_id, consume_money, consume_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from consume
+    where consume_change_id = #{consumeChangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from consume
+    where consume_change_id = #{consumeChangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Consume" >
+    insert into consume (consume_change_id, user_id, inte_change_id, 
+      consume_order_id, consume_money, consume_time
+      )
+    values (#{consumeChangeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{inteChangeId,jdbcType=INTEGER}, 
+      #{consumeOrderId,jdbcType=VARCHAR}, #{consumeMoney,jdbcType=REAL}, #{consumeTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Consume" >
+    insert into consume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="consumeChangeId != null" >
+        consume_change_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="inteChangeId != null" >
+        inte_change_id,
+      </if>
+      <if test="consumeOrderId != null" >
+        consume_order_id,
+      </if>
+      <if test="consumeMoney != null" >
+        consume_money,
+      </if>
+      <if test="consumeTime != null" >
+        consume_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="consumeChangeId != null" >
+        #{consumeChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeId != null" >
+        #{inteChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="consumeOrderId != null" >
+        #{consumeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeMoney != null" >
+        #{consumeMoney,jdbcType=REAL},
+      </if>
+      <if test="consumeTime != null" >
+        #{consumeTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Consume" >
+    update consume
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeId != null" >
+        inte_change_id = #{inteChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="consumeOrderId != null" >
+        consume_order_id = #{consumeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeMoney != null" >
+        consume_money = #{consumeMoney,jdbcType=REAL},
+      </if>
+      <if test="consumeTime != null" >
+        consume_time = #{consumeTime,jdbcType=DATE},
+      </if>
+    </set>
+    where consume_change_id = #{consumeChangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Consume" >
+    update consume
+    set user_id = #{userId,jdbcType=INTEGER},
+      inte_change_id = #{inteChangeId,jdbcType=INTEGER},
+      consume_order_id = #{consumeOrderId,jdbcType=VARCHAR},
+      consume_money = #{consumeMoney,jdbcType=REAL},
+      consume_time = #{consumeTime,jdbcType=DATE}
+    where consume_change_id = #{consumeChangeId,jdbcType=INTEGER}
+  </update>
+</mapper>

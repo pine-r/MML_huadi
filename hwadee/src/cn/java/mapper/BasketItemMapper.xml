@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.BasketItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.BasketItem" >
+    <id column="basket_item_id" property="basketItemId" jdbcType="INTEGER" />
+    <result column="basket_id" property="basketId" jdbcType="INTEGER" />
+    <result column="basket_goods_id" property="basketGoodsId" jdbcType="INTEGER" />
+    <result column="basket_goods_count" property="basketGoodsCount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    basket_item_id, basket_id, basket_goods_id, basket_goods_count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from basketitem
+    where basket_item_id = #{basketItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from basketitem
+    where basket_item_id = #{basketItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.BasketItem" >
+    insert into basketitem (basket_item_id, basket_id, basket_goods_id, 
+      basket_goods_count)
+    values (#{basketItemId,jdbcType=INTEGER}, #{basketId,jdbcType=INTEGER}, #{basketGoodsId,jdbcType=INTEGER}, 
+      #{basketGoodsCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.BasketItem" >
+    insert into basketitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="basketItemId != null" >
+        basket_item_id,
+      </if>
+      <if test="basketId != null" >
+        basket_id,
+      </if>
+      <if test="basketGoodsId != null" >
+        basket_goods_id,
+      </if>
+      <if test="basketGoodsCount != null" >
+        basket_goods_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="basketItemId != null" >
+        #{basketItemId,jdbcType=INTEGER},
+      </if>
+      <if test="basketId != null" >
+        #{basketId,jdbcType=INTEGER},
+      </if>
+      <if test="basketGoodsId != null" >
+        #{basketGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="basketGoodsCount != null" >
+        #{basketGoodsCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.BasketItem" >
+    update basketitem
+    <set >
+      <if test="basketId != null" >
+        basket_id = #{basketId,jdbcType=INTEGER},
+      </if>
+      <if test="basketGoodsId != null" >
+        basket_goods_id = #{basketGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="basketGoodsCount != null" >
+        basket_goods_count = #{basketGoodsCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where basket_item_id = #{basketItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.BasketItem" >
+    update basketitem
+    set basket_id = #{basketId,jdbcType=INTEGER},
+      basket_goods_id = #{basketGoodsId,jdbcType=INTEGER},
+      basket_goods_count = #{basketGoodsCount,jdbcType=INTEGER}
+    where basket_item_id = #{basketItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

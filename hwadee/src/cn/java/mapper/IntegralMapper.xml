@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.IntegralMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Integral" >
+    <id column="inte_change_id" property="inteChangeId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="consume_change_id" property="consumeChangeId" jdbcType="INTEGER" />
+    <result column="inte_change_value" property="inteChangeValue" jdbcType="INTEGER" />
+    <result column="inte_change_time" property="inteChangeTime" jdbcType="DATE" />
+    <result column="inte_change_reason" property="inteChangeReason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inte_change_id, user_id, consume_change_id, inte_change_value, inte_change_time, 
+    inte_change_reason
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral
+    where inte_change_id = #{inteChangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from integral
+    where inte_change_id = #{inteChangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Integral" >
+    insert into integral (inte_change_id, user_id, consume_change_id, 
+      inte_change_value, inte_change_time, inte_change_reason
+      )
+    values (#{inteChangeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{consumeChangeId,jdbcType=INTEGER}, 
+      #{inteChangeValue,jdbcType=INTEGER}, #{inteChangeTime,jdbcType=DATE}, #{inteChangeReason,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Integral" >
+    insert into integral
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inteChangeId != null" >
+        inte_change_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="consumeChangeId != null" >
+        consume_change_id,
+      </if>
+      <if test="inteChangeValue != null" >
+        inte_change_value,
+      </if>
+      <if test="inteChangeTime != null" >
+        inte_change_time,
+      </if>
+      <if test="inteChangeReason != null" >
+        inte_change_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inteChangeId != null" >
+        #{inteChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consumeChangeId != null" >
+        #{consumeChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeValue != null" >
+        #{inteChangeValue,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeTime != null" >
+        #{inteChangeTime,jdbcType=DATE},
+      </if>
+      <if test="inteChangeReason != null" >
+        #{inteChangeReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Integral" >
+    update integral
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consumeChangeId != null" >
+        consume_change_id = #{consumeChangeId,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeValue != null" >
+        inte_change_value = #{inteChangeValue,jdbcType=INTEGER},
+      </if>
+      <if test="inteChangeTime != null" >
+        inte_change_time = #{inteChangeTime,jdbcType=DATE},
+      </if>
+      <if test="inteChangeReason != null" >
+        inte_change_reason = #{inteChangeReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inte_change_id = #{inteChangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Integral" >
+    update integral
+    set user_id = #{userId,jdbcType=INTEGER},
+      consume_change_id = #{consumeChangeId,jdbcType=INTEGER},
+      inte_change_value = #{inteChangeValue,jdbcType=INTEGER},
+      inte_change_time = #{inteChangeTime,jdbcType=DATE},
+      inte_change_reason = #{inteChangeReason,jdbcType=VARCHAR}
+    where inte_change_id = #{inteChangeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.GoodsItemKeyMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.GoodsItemKey" >
+    <id column="key_id" property="keyId" jdbcType="INTEGER" />
+    <result column="inte_goods_id" property="inteGoodsId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="size" property="size" jdbcType="VARCHAR" />
+    <result column="taste" property="taste" jdbcType="VARCHAR" />
+    <result column="material" property="material" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    key_id, inte_goods_id, goods_id, color, size, taste, material, brand
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsitemkey
+    where key_id = #{keyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsitemkey
+    where key_id = #{keyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.GoodsItemKey" >
+    insert into goodsitemkey (key_id, inte_goods_id, goods_id, 
+      color, size, taste, 
+      material, brand)
+    values (#{keyId,jdbcType=INTEGER}, #{inteGoodsId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{color,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, #{taste,jdbcType=VARCHAR}, 
+      #{material,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.GoodsItemKey" >
+    insert into goodsitemkey
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyId != null" >
+        key_id,
+      </if>
+      <if test="inteGoodsId != null" >
+        inte_goods_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="taste != null" >
+        taste,
+      </if>
+      <if test="material != null" >
+        material,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyId != null" >
+        #{keyId,jdbcType=INTEGER},
+      </if>
+      <if test="inteGoodsId != null" >
+        #{inteGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="taste != null" >
+        #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null" >
+        #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.GoodsItemKey" >
+    update goodsitemkey
+    <set >
+      <if test="inteGoodsId != null" >
+        inte_goods_id = #{inteGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="taste != null" >
+        taste = #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null" >
+        material = #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where key_id = #{keyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.GoodsItemKey" >
+    update goodsitemkey
+    set inte_goods_id = #{inteGoodsId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      color = #{color,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      taste = #{taste,jdbcType=VARCHAR},
+      material = #{material,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR}
+    where key_id = #{keyId,jdbcType=INTEGER}
+  </update>
+</mapper>

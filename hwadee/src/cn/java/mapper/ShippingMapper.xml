@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.ShippingMapper">
+	<resultMap id="BaseResultMap" type="cn.java.entity.Shipping">
+		<id column="address_id" property="shippingId" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName"
+			jdbcType="VARCHAR" />
+		<result column="Zip" property="Zip" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		address_id, user_id, address, user_name, Zip, phone
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from address
+		where address_id = #{addressId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from address
+		where address_id =
+		#{addressId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="cn.java.entity.Shipping" useGeneratedKeys="true" keyProperty="shippingId" >
+		
+		insert into address (
+		address_id,
+		user_id,
+		address,
+		user_name, Zip, phone
+		)
+		values
+		(#{shippingId,jdbcType=INTEGER},
+		#{userId,jdbcType=INTEGER},
+		#{address,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{Zip,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="cn.java.entity.Shipping">
+		insert into address
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				address_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="Zip != null">
+				Zip,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				#{addressId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="Zip != null">
+				#{Zip,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="cn.java.entity.Shipping">
+		update address
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="Zip != null">
+				Zip = #{Zip,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where address_id = #{addressId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="cn.java.entity.Shipping">
+		update address
+		set user_id = #{userId,jdbcType=INTEGER},
+		address = #{address,jdbcType=VARCHAR},
+		user_name =
+		#{userName,jdbcType=VARCHAR},
+		Zip = #{Zip,jdbcType=VARCHAR},
+		phone =
+		#{phone,jdbcType=VARCHAR}
+		where address_id =
+		#{addressId,jdbcType=INTEGER}
+	</update>
+
+	<delete id="deleteByShippingIdUserId" parameterType="map">
+		DELETE FROM
+		address
+		where address_id=#{shippingId}
+		and
+		user_id=#{userId}
+	</delete>
+
+	<update id="updateByShipping"
+		parameterType="cn.java.entity.Shipping">
+		update 
+		address
+		set
+		address=#{address},
+		user_name=#{userName},
+		Zip=#{Zip},
+		phone=#{phone}
+		where 
+		address_id =#{shippingId}
+		and 
+		user_id =#{userId}
+
+		
+	</update>
+
+
+	<select id="selectByShippingIdUserId" resultMap="BaseResultMap"
+		parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		from address
+		where 
+		address_id=#{shippingId}
+		and 
+		user_id =#{userId}
+	</select>
+
+
+
+	<select id="selectByUserId" resultMap="BaseResultMap"
+		parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		from 
+		address
+		where
+		user_id=#{userId}
+
+	</select>
+
+</mapper>

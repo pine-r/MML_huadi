@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="key_id" property="keyId" jdbcType="INTEGER" />
+    <result column="goods_subname" property="goodsSubname" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="goods_subimages" property="goodsSubimages" jdbcType="VARCHAR" />
+    <result column="goods_images" property="goodsImages" jdbcType="VARCHAR" />
+    <result column="goods_details" property="goodsDetails" jdbcType="VARCHAR" />
+    <result column="goods_tag" property="goodsTag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_id, category_id, key_id, goods_subname, goods_name, goods_price, status, stock, 
+    goods_subimages, goods_images, goods_details, goods_tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Goods" >
+    insert into goods (goods_id, category_id, key_id, 
+      goods_subname, goods_name, goods_price, 
+      status, stock, goods_subimages, 
+      goods_images, goods_details, goods_tag
+      )
+    values (#{goodsId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{keyId,jdbcType=INTEGER}, 
+      #{goodsSubname,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT}, #{stock,jdbcType=INTEGER}, #{goodsSubimages,jdbcType=VARCHAR}, 
+      #{goodsImages,jdbcType=VARCHAR}, #{goodsDetails,jdbcType=VARCHAR}, #{goodsTag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="keyId != null" >
+        key_id,
+      </if>
+      <if test="goodsSubname != null" >
+        goods_subname,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="goodsSubimages != null" >
+        goods_subimages,
+      </if>
+      <if test="goodsImages != null" >
+        goods_images,
+      </if>
+      <if test="goodsDetails != null" >
+        goods_details,
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="keyId != null" >
+        #{keyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSubname != null" >
+        #{goodsSubname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSubimages != null" >
+        #{goodsSubimages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImages != null" >
+        #{goodsImages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDetails != null" >
+        #{goodsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTag != null" >
+        #{goodsTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Goods" >
+    update goods
+    <set >
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="keyId != null" >
+        key_id = #{keyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSubname != null" >
+        goods_subname = #{goodsSubname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSubimages != null" >
+        goods_subimages = #{goodsSubimages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImages != null" >
+        goods_images = #{goodsImages,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDetails != null" >
+        goods_details = #{goodsDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag = #{goodsTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Goods" >
+    update goods
+    set category_id = #{categoryId,jdbcType=INTEGER},
+      key_id = #{keyId,jdbcType=INTEGER},
+      goods_subname = #{goodsSubname,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      stock = #{stock,jdbcType=INTEGER},
+      goods_subimages = #{goodsSubimages,jdbcType=VARCHAR},
+      goods_images = #{goodsImages,jdbcType=VARCHAR},
+      goods_details = #{goodsDetails,jdbcType=VARCHAR},
+      goods_tag = #{goodsTag,jdbcType=VARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    from goods
+    ORDER BY goods_id asc
+  </select>
+  <select id="selectByNameAndGoodsId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from goods
+    <where>
+      <if test="goodsName!= null">
+        and goods_name like #{goodsName}
+      </if>
+      <if test="goodsId != null">
+        and goods_id = #{goodsId}
+      </if>
+    </where>
+  </select>
+  <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from goods
+    where status = 1
+    <if test="keyword != null">
+      and goods_name like #{keyword}
+    </if>
+    <if test="categoryIdList != null" >
+      and category_id in
+      <foreach item="item" index="index" open="(" separator="," close=")" collection="categoryIdList">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.TopicMapper" >
+  <resultMap id="BaseResultMap" type="cn.java.entity.Topic" >
+    <id column="topic_id" property="topicId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="topic_user_id" property="topicUserId" jdbcType="INTEGER" />
+    <result column="topic_content" property="topicContent" jdbcType="VARCHAR" />
+    <result column="topic_reply_count" property="topicReplyCount" jdbcType="INTEGER" />
+    <result column="topic_pic" property="topicPic" jdbcType="VARCHAR" />
+    <result column="topic_order_id" property="topicOrderId" jdbcType="VARCHAR" />
+    <result column="topic_goods_id" property="topicGoodsId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    topic_id, order_id, user_id, topic_user_id, topic_content, topic_reply_count, topic_pic, 
+    topic_order_id, topic_goods_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topic
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topic
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.java.entity.Topic" >
+    insert into topic (topic_id, order_id, user_id, 
+      topic_user_id, topic_content, topic_reply_count, 
+      topic_pic, topic_order_id, topic_goods_id
+      )
+    values (#{topicId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{topicUserId,jdbcType=INTEGER}, #{topicContent,jdbcType=VARCHAR}, #{topicReplyCount,jdbcType=INTEGER}, 
+      #{topicPic,jdbcType=VARCHAR}, #{topicOrderId,jdbcType=VARCHAR}, #{topicGoodsId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.java.entity.Topic" >
+    insert into topic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        topic_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="topicUserId != null" >
+        topic_user_id,
+      </if>
+      <if test="topicContent != null" >
+        topic_content,
+      </if>
+      <if test="topicReplyCount != null" >
+        topic_reply_count,
+      </if>
+      <if test="topicPic != null" >
+        topic_pic,
+      </if>
+      <if test="topicOrderId != null" >
+        topic_order_id,
+      </if>
+      <if test="topicGoodsId != null" >
+        topic_goods_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="topicUserId != null" >
+        #{topicUserId,jdbcType=INTEGER},
+      </if>
+      <if test="topicContent != null" >
+        #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicReplyCount != null" >
+        #{topicReplyCount,jdbcType=INTEGER},
+      </if>
+      <if test="topicPic != null" >
+        #{topicPic,jdbcType=VARCHAR},
+      </if>
+      <if test="topicOrderId != null" >
+        #{topicOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="topicGoodsId != null" >
+        #{topicGoodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.entity.Topic" >
+    update topic
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="topicUserId != null" >
+        topic_user_id = #{topicUserId,jdbcType=INTEGER},
+      </if>
+      <if test="topicContent != null" >
+        topic_content = #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicReplyCount != null" >
+        topic_reply_count = #{topicReplyCount,jdbcType=INTEGER},
+      </if>
+      <if test="topicPic != null" >
+        topic_pic = #{topicPic,jdbcType=VARCHAR},
+      </if>
+      <if test="topicOrderId != null" >
+        topic_order_id = #{topicOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="topicGoodsId != null" >
+        topic_goods_id = #{topicGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.entity.Topic" >
+    update topic
+    set order_id = #{orderId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      topic_user_id = #{topicUserId,jdbcType=INTEGER},
+      topic_content = #{topicContent,jdbcType=VARCHAR},
+      topic_reply_count = #{topicReplyCount,jdbcType=INTEGER},
+      topic_pic = #{topicPic,jdbcType=VARCHAR},
+      topic_order_id = #{topicOrderId,jdbcType=VARCHAR},
+      topic_goods_id = #{topicGoodsId,jdbcType=INTEGER}
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </update>
+</mapper>
